@@ -27,7 +27,7 @@ reference_images = dataset['radiances']
 camera_poses = dataset['cameras']
 
 
-TEST_IMAGE = 69  # 64-79 are the generated testing images
+TEST_IMAGE = 74  # 64-79 are the generated testing images
 
 # Tool method to render a volume with dataset configurations
 def render_volume(sigma_tensor, samples=16*1024):
@@ -58,17 +58,17 @@ def render_volume(sigma_tensor, samples=16*1024):
     return radiances
 
 import matplotlib
-norm = matplotlib.colors.PowerNorm(1.0/4, vmin=0, vmax=dataset['sigma_scale'], clip=True)
+norm = matplotlib.colors.PowerNorm(1.0/3, vmin=0, vmax=dataset['sigma_scale'], clip=True)
 
 # Tool method to draw a volume slice
 def draw_volume(sigma_tensor, axis):
-    axis.imshow(sigma_tensor[:, :, sigma_tensor.shape[2]//2, 0].T.cpu().numpy(), cmap='bone', norm=norm)
+    axis.imshow(sigma_tensor[:, :, sigma_tensor.shape[2]//2 - 1:sigma_tensor.shape[2]//2+2, 0].mean(-1).T.cpu().numpy(), cmap='bone', norm=norm)
     axis.invert_yaxis()
     axis.axis('off')
 
 def draw_volume_difference(sigma_tensor, axis):
     volume_diff = (reference_volume-sigma_tensor).abs()
-    axis.imshow(volume_diff[:, :, sigma_tensor.shape[2]//2, 0].T.cpu().numpy(), vmin=0, vmax=dataset['sigma_scale'], cmap='hot')
+    axis.imshow(volume_diff[:, :, sigma_tensor.shape[2]//2 - 1: sigma_tensor.shape[2]//2+2, 0].mean(-1).T.cpu().numpy(), vmin=0, vmax=dataset['sigma_scale'], cmap='hot')
     axis.invert_yaxis()
     axis.axis('off')
 

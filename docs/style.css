@@ -6,7 +6,8 @@
 }
 
 body {
-  background-color: #0a192f;
+  background-color: #ffffff;
+  font-family: 'Californian FB';
 }
 
 img {
@@ -15,15 +16,13 @@ img {
 }
 
 main {
-  display: -ms-grid;
   display: grid;
   place-items: center;
-  min-height: 100vh;
 }
 
 .container {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   --position: 50%;
   -webkit-box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
           box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
@@ -151,19 +150,20 @@ main {
 }
 
 header {
-  position: absolute;
+  text-align: center;
+  position: relative;
   top: 0;
-  padding: 3px 10px;
-  background: #0a192f;
-  color: #fff;
+  padding: 30px 40px;
+  background: #ffffff;
+  color: #000000;
   width: 100%;
   z-index: 999;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 header button {

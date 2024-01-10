@@ -45,7 +45,10 @@ plt.gca().invert_yaxis()
 plt.show()
 
 # create mask from initial estimate
-final_mask = rdv.resample_grid((initial_sigmas > 0.1251).float(), tuple((d - 1) // 2 + 1 for d in original_tensor.shape[:-1]))
+final_mask = rdv.resample_grid(
+    rdv.resample_grid((initial_sigmas > 0.1251).float(), tuple((d - 1) // 4 + 1 for d in original_tensor.shape[:-1])),
+    original_tensor.shape[:-1]
+)
 plt.imshow(final_mask[:, :, final_mask.shape[2]//2, 0].T.detach().cpu(), vmin=0, vmax=1.0)
 plt.gca().invert_yaxis()
 plt.show()
