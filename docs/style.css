@@ -1,0 +1,198 @@
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color: #0a192f;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+main {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+  --position: 50%;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .container {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+}
+
+.image-container {
+  aspect-ratio: var(--aspect-ratio, 3.07/1);
+}
+
+.slider-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: left;
+     object-position: left;
+}
+
+.image-before {
+  position: absolute;
+  inset: 0;
+  width: var(--position);
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slider:focus-visible ~ .slider-button {
+  outline: 5px solid black;
+  outline-offset: 3px;
+}
+
+.slider-line {
+  position: absolute;
+  inset: 0;
+  width: 0.2rem;
+  height: 100%;
+  background-color: #fff;
+  left: var(--position);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.slider-button {
+  position: absolute;
+  background-color: #fff;
+  color: black;
+  padding: 0.5rem;
+  border-radius: 100vw;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  top: 50%;
+  left: var(--position);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  pointer-events: none;
+  -webkit-box-shadow: 1px 1px 1px rgba(8, 3, 3, 0.5);
+          box-shadow: 1px 1px 1px rgba(8, 3, 3, 0.5);
+  width: 3rem;
+  height: 3rem;
+}
+
+.buttons {
+  position: absolute;
+  top: calc(100% - 6vh);
+  left: 10px;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .buttons {
+    position: absolute;
+    top: calc(100% - 16vh);
+    left: 10px;
+    z-index: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .buttons label {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.buttons label {
+  padding: 0.5rem 1rem;
+  background-color: #0a192f;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: 1px solid #fff;
+}
+
+@media (max-width: 768px) {
+  .slider-button {
+    width: 2rem;
+    height: 2rem;
+  }
+  svg {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+  .slider-line {
+    width: 0.1rem;
+  }
+}
+
+header {
+  position: absolute;
+  top: 0;
+  padding: 3px 10px;
+  background: #0a192f;
+  color: #fff;
+  width: 100%;
+  z-index: 999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header button {
+  padding: 0.5rem 1rem;
+  background-color: #0a192f;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: 1px solid #fff;
+}
+
+@media (max-width: 768px) {
+  header {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    z-index: 999;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 3px 0;
+  }
+  header h1 {
+    margin: auto;
+    font-size: 1.5rem;
+  }
+  header button {
+    margin-top: 10px;
+    margin-bottom: 0.5rem;
+  }
+}
+/*# sourceMappingURL=style.css.map */
