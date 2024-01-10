@@ -5,7 +5,8 @@
 }
 
 body {
-    background-color: #0a192f;
+    background-color: #ffffff;
+    font-family: 'Californian FB';
 }
 
 img {
@@ -21,7 +22,7 @@ main {
 
 .container {
     position: relative;
-    overflow: hidden;
+    overflow: clip;
     --position: 50%;
     box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
     @media (max-width: 768px) {
@@ -131,16 +132,15 @@ main {
 }
 
 header {
-    position: absolute;
+    text-align: center;
+    position: relative;
     top: 0;
-    padding: 3px 10px;
-    background: #0a192f;
-    color: #fff;
-
+    padding: 30px 40px;
+    background: #ffffff;
+    color: #000000;
     width: 100%;
     z-index: 999;
-
-    display: flex;
+    display: grid;
     justify-content: space-between;
     button {
         padding: 0.5rem 1rem;
