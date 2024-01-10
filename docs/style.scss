@@ -90,9 +90,15 @@ main {
 }
 
 .link-button {
-    width: 32px;
-    height: 32px;
+    position: relative;
+    display: table-cell;
+  padding: 10px;
 }
+.link-button img {
+    width: 64px;
+    height: 64px;
+}
+
 
 .buttons {
     position: absolute;
