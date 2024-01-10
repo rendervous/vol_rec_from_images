@@ -1,12 +1,189 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Comparision Slider</title>
     <link rel="icon" href="./docs/favicon.png" type="image/png">
-    <link rel="stylesheet" href="./docs/style.scss">
+    <link rel="stylesheet" href="./docs/style.css">
     <style>
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+body {
+  background-color: #ffffff;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+main {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+.container {
+  position: relative;
+  overflow: hidden;
+  --position: 50%;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+}
+@media (max-width: 768px) {
+  .container {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+}
+.image-container {
+  aspect-ratio: var(--aspect-ratio, 3.07/1);
+}
+.slider-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: left;
+     object-position: left;
+}
+.image-before {
+  position: absolute;
+  inset: 0;
+  width: var(--position);
+}
+.slider {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+.slider:focus-visible ~ .slider-button {
+  outline: 5px solid black;
+  outline-offset: 3px;
+}
+.slider-line {
+  position: absolute;
+  inset: 0;
+  width: 0.2rem;
+  height: 100%;
+  background-color: #fff;
+  left: var(--position);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  pointer-events: none;
+}
+.slider-button {
+  position: absolute;
+  background-color: #fff;
+  color: black;
+  padding: 0.5rem;
+  border-radius: 100vw;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  top: 50%;
+  left: var(--position);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  pointer-events: none;
+  -webkit-box-shadow: 1px 1px 1px rgba(8, 3, 3, 0.5);
+          box-shadow: 1px 1px 1px rgba(8, 3, 3, 0.5);
+  width: 3rem;
+  height: 3rem;
+}
+.buttons {
+  position: absolute;
+  top: calc(100% - 6vh);
+  left: 10px;
+  z-index: 1;
+}
+@media (max-width: 768px) {
+  .buttons {
+    position: absolute;
+    top: calc(100% - 16vh);
+    left: 10px;
+    z-index: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .buttons label {
+    margin-bottom: 0.5rem;
+  }
+}
+.buttons label {
+  padding: 0.5rem 1rem;
+  background-color: #0a192f;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: 1px solid #fff;
+}
+@media (max-width: 768px) {
+  .slider-button {
+    width: 2rem;
+    height: 2rem;
+  }
+  svg {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+  .slider-line {
+    width: 0.1rem;
+  }
+}
+header {
+  position: absolute;
+  top: 0;
+  padding: 3px 10px;
+  background: #0a192f;
+  color: #fff;
+  width: 100%;
+  z-index: 999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+header button {
+  padding: 0.5rem 1rem;
+  background-color: #0a192f;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: 1px solid #fff;
+}
+@media (max-width: 768px) {
+  header {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    z-index: 999;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 3px 0;
+  }
+  header h1 {
+    margin: auto;
+    font-size: 1.5rem;
+  }
+  header button {
+    margin-top: 10px;
+    margin-bottom: 0.5rem;
+  }
+}
+/*# sourceMappingURL=style.css.map */
     </style>
 </head>
 <body>
@@ -43,16 +220,13 @@
         </div>
     </main>
     <script>
-
-        var file1 = {}
+        var file1 = {};
         var file1Selected = false;
-        var file2 = {}
+        var file2 = {};
         var file2Selected = false;
-
         function selectImage(imageNumber) {
             const inputElement = document.getElementById(`imageUpload${imageNumber}`);
             const file = inputElement.files[0];
-
             if (file && file.type.startsWith('image/')) {
                 if (imageNumber === 1) {
                     file1 = file;
@@ -65,7 +239,6 @@
                     document.querySelector(`label[for="imageUpload${imageNumber}"]`).innerText = 'Change Before Image';
                     document.querySelector(`label[for="imageUpload${imageNumber}"]`).style.backgroundColor = 'green';
                 }
-
                 if (file1Selected && file2Selected) {
                     document.querySelector('.showDiff').style.setProperty('visibility', 'visible');
                 }
@@ -74,17 +247,14 @@
                 inputElement.value = '';
             }
         }
-
         function setAspectRatio(imageNumber) {
             const imageElement = document.querySelector(`.image-${imageNumber}`);
             const aspectRatio = imageElement.naturalWidth / imageElement.naturalHeight;
             const aspectRatioString = aspectRatio.toString();
             document.querySelector('.image-container').style.setProperty('--aspect-ratio', aspectRatioString);
         }
-
         const container = document.querySelector('.container');
         const slider = document.querySelector('.slider');
-
         slider.addEventListener('input', function (e) {
             container.style.setProperty('--position', e.target.value + '%');
         });
@@ -92,20 +262,16 @@
             if (file1 && file2) {
                 const image1 = document.querySelector('.image-1');
                 const image2 = document.querySelector('.image-2');
-
                 image1.src = URL.createObjectURL(file1);
                 image2.src = URL.createObjectURL(file2);
-
                 const checkAspectRatio = () => {
                     const aspectRatio1 = image1.naturalWidth / image1.naturalHeight;
                     const aspectRatio2 = image2.naturalWidth / image2.naturalHeight;
-
                     if (aspectRatio1 === aspectRatio2) {
                         setAspectRatio(1);
                         setAspectRatio(2);
                         document.querySelector(`label[for="imageUpload1"]`).style.backgroundColor = '#0a192f';
                         document.querySelector(`label[for="imageUpload2"]`).style.backgroundColor = '#0a192f';
-
                     } else {
                         alert('Aspect ratios of the images must be the same. Please select images with the same aspect ratio.');
                         image1.src = './images/img1.png';
@@ -115,43 +281,20 @@
                         document.querySelector(`label[for="imageUpload1"]`).style.backgroundColor = '#0a192f';
                         document.querySelector(`label[for="imageUpload2"]`).style.backgroundColor = '#0a192f';
                         document.querySelector('.showDiff').style.setProperty('visibility', 'hidden');
-
                     }
                 };
-
                 image1.onload = checkAspectRatio;
                 image2.onload = checkAspectRatio;
             }
         }
-
     </script>
 </body>
-
 </html>
 
 # Image-based Reconstruction of Heterogeneous Media in the Presence of Multiple Light-Scattering
 Ludwig Leonard and Rüdiger Westermann<br>Technical University of Munich<br>
 | [Full paper] (https://) | 
 ![teaser](./docs/f_new_teaser-1.jpg)
-
-<!--
-## Abstract
-
-Image-based reconstruction of a three-dimensional heterogeneous density field in the
-presence of multiple scattering of light is intrinsically under-constrained. This leads to
-reconstructions that look similar to the ground truth when rendered, but the recovered
-field is often far off the real one. We shed light on the sources of uncertainty in the
-reconstruction process which are responsible for this ambiguity, and propose the fol-
-lowing approaches to improve the reconstruction quality: Firstly, we introduce a new
-path sampling strategy, which yields more accurate estimates of the gradients of the
-extinction field. Secondly, we build upon the observation that the variance in the loss
-computation is one source of bias in the optimization process. To reduce this variance in
-the primal estimator, we propose exploiting temporal coherence by reusing previously
-rendered images. All this is coupled with a constraint on spatial object occupancy,
-which restricts the problem to a reconstructed shape prior. In a number of examples we
-demonstrate that compared to existing approaches the proposed reconstruction pipeline
-leads to improved accuracy of the reconstructed density fields.
--->
 
 This repository contains the official authors implementation associated with the paper "*Image-based Reconstruction of Heterogeneous Media in the Presence of Multiple Light-Scattering*".
 
