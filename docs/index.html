@@ -9,73 +9,91 @@
 </head>
 <body>
     <main>
-        <header>
+        <header style="max-width: 800px">
             <div>
                 <h1>Image-based Reconstruction of Heterogeneous Media in the Presence of Multiple Light-Scattering</h1>
                 <br/>
                 <h3>Ludwic Leonard and Rüdiger Westermann</h3>
             </div>
         </header>
-        <div>
-            <h2 style="text-align: center">Abstract</h2>
-            <div style="padding: 10px 50px; text-align: justify"> Image-based reconstruction of a three-dimensional heterogeneous density field in the presence of multiple scattering of light is intrinsically under-constrained. This leads to reconstructions that look similar to the ground truth when rendered, but the recovered field is often far off the real one.
-            We shed light on the sources of uncertainty in the reconstruction process which are responsible for this ambiguity, and propose the following approaches to improve the reconstruction quality: Firstly, we introduce a new path sampling strategy, which yields more accurate estimates of the gradients of the extinction field. Secondly, we build upon the observation that the variance in the loss computation is one source of bias in the optimization process. To reduce this variance in the primal estimator, we propose exploiting temporal coherence by reusing previously rendered images.
-                All this is coupled with a constraint on spatial object occupancy, which restricts the problem to a reconstructed shape prior. In a number of examples we demonstrate that compared to existing approaches the proposed reconstruction pipeline leads to improved accuracy of the reconstructed density fields.
+        <div style="max-width: 800px">
+            <div style="width: 100%; overflow: hidden;  position: relative">
+                <div class="container" style="width: 40%; display:table-cell;">
+                    <div class="image-container-1">
+                        <img class="image-before slider-image image-1" src="./reference_images.png" alt="color photo"
+                            onload="setAspectRatio(1, 1)">
+                        <img class="image-after slider-image image-2" src="./comparing_images.png" alt="black and white"
+                            onload="setAspectRatio(1, 2)">
+                    </div>
+                    <input type="range" min="0" max="100" value="50" aria-label="Percentage of before photo shown"
+                        class="slider">
+                    <div class="slider-line" aria-hidden="true"></div>
+                    <div class="slider-button" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            viewBox="0 0 256 256">
+                            <rect width="256" height="256" fill="none"></rect>
+                            <line x1="128" y1="40" x2="128" y2="216" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="16"></line>
+                            <line x1="96" y1="128" x2="16" y2="128" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="16"></line>
+                            <polyline points="48 160 16 128 48 96" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="16"></polyline>
+                            <line x1="160" y1="128" x2="240" y2="128" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="16"></line>
+                            <polyline points="208 96 240 128 208 160" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="16"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="container" style="width: 40%; display:table-cell;">
+                    <div class="image-container-2">
+                        <img class="image-before slider-image image-3" src="./reference_volumes.png" alt="color photo"
+                            onload="setAspectRatio(2, 3)">
+                        <img class="image-after slider-image image-4" src="./comparing_volumes.png" alt="black and white"
+                            onload="setAspectRatio(2, 4)">
+                    </div>
+                    <input type="range" min="0" max="100" value="50" aria-label="Percentage of before photo shown"
+                        class="slider">
+                    <div class="slider-line" aria-hidden="true"></div>
+                    <div class="slider-button" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            viewBox="0 0 256 256">
+                            <rect width="256" height="256" fill="none"></rect>
+                            <line x1="128" y1="40" x2="128" y2="216" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="16"></line>
+                            <line x1="96" y1="128" x2="16" y2="128" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="16"></line>
+                            <polyline points="48 160 16 128 48 96" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="16"></polyline>
+                            <line x1="160" y1="128" x2="240" y2="128" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="16"></line>
+                            <polyline points="208 96 240 128 208 160" fill="none" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="16"></polyline>
+                        </svg>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div style="width: 60%; overflow: hidden;">
-            <div class="container" style="width: 40%; display:table-cell;">
-                <div class="image-container-1">
-                    <img class="image-before slider-image image-1" src="./reference_images.png" alt="color photo"
-                        onload="setAspectRatio(1, 1)">
-                    <img class="image-after slider-image image-2" src="./comparing_images.png" alt="black and white"
-                        onload="setAspectRatio(1, 2)">
-                </div>
-                <input type="range" min="0" max="100" value="50" aria-label="Percentage of before photo shown"
-                    class="slider">
-                <div class="slider-line" aria-hidden="true"></div>
-                <div class="slider-button" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                        viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none"></rect>
-                        <line x1="128" y1="40" x2="128" y2="216" fill="none" stroke="currentColor" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="16"></line>
-                        <line x1="96" y1="128" x2="16" y2="128" fill="none" stroke="currentColor" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="16"></line>
-                        <polyline points="48 160 16 128 48 96" fill="none" stroke="currentColor" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="16"></polyline>
-                        <line x1="160" y1="128" x2="240" y2="128" fill="none" stroke="currentColor" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="16"></line>
-                        <polyline points="208 96 240 128 208 160" fill="none" stroke="currentColor" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="16"></polyline>
-                    </svg>
+            <br/>
+            <div style="width: 100%; overflow: hidden;  position: relative">
+                <h2 style="text-align: center">Abstract</h2>
+                <div style="padding: 10px 50px; text-align: justify"> Image-based reconstruction of a three-dimensional heterogeneous density field in the presence of multiple scattering of light is intrinsically under-constrained. This leads to reconstructions that look similar to the ground truth when rendered, but the recovered field is often far off the real one.
+                We shed light on the sources of uncertainty in the reconstruction process which are responsible for this ambiguity, and propose the following approaches to improve the reconstruction quality: Firstly, we introduce a new path sampling strategy, which yields more accurate estimates of the gradients of the extinction field. Secondly, we build upon the observation that the variance in the loss computation is one source of bias in the optimization process. To reduce this variance in the primal estimator, we propose exploiting temporal coherence by reusing previously rendered images.
+                    All this is coupled with a constraint on spatial object occupancy, which restricts the problem to a reconstructed shape prior. In a number of examples we demonstrate that compared to existing approaches the proposed reconstruction pipeline leads to improved accuracy of the reconstructed density fields.
                 </div>
             </div>
-            <div class="container" style="width: 40%; display:table-cell;">
-                <div class="image-container-2">
-                    <img class="image-before slider-image image-3" src="./reference_volumes.png" alt="color photo"
-                        onload="setAspectRatio(2, 3)">
-                    <img class="image-after slider-image image-4" src="./comparing_volumes.png" alt="black and white"
-                        onload="setAspectRatio(2, 4)">
-                </div>
-                <input type="range" min="0" max="100" value="50" aria-label="Percentage of before photo shown"
-                    class="slider">
-                <div class="slider-line" aria-hidden="true"></div>
-                <div class="slider-button" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                        viewBox="0 0 256 256">
-                        <rect width="256" height="256" fill="none"></rect>
-                        <line x1="128" y1="40" x2="128" y2="216" fill="none" stroke="currentColor" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="16"></line>
-                        <line x1="96" y1="128" x2="16" y2="128" fill="none" stroke="currentColor" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="16"></line>
-                        <polyline points="48 160 16 128 48 96" fill="none" stroke="currentColor" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="16"></polyline>
-                        <line x1="160" y1="128" x2="240" y2="128" fill="none" stroke="currentColor" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="16"></line>
-                        <polyline points="208 96 240 128 208 160" fill="none" stroke="currentColor" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="16"></polyline>
-                    </svg>
+            <br/>
+            <div style="overflow: hidden; height: 80px; ">
+                <div style="width: 200px; margin: auto">
+                <span class="link-button">
+                    <a href="https://github.com/rendervous/vol_rec_from_images">
+                        <img src="github_icon.png">
+                    </a>
+                </span>
+                <span class="link-button">
+                    <a href="https://github.com/rendervous/rendervous">
+                        <img src="paper_icon.png">
+                    </a>
+                </span >
                 </div>
             </div>
         </div>

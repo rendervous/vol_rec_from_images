@@ -100,6 +100,16 @@ main {
   height: 3rem;
 }
 
+.link-button {
+    position: relative;
+    display: table-cell;
+  padding: 10px;
+}
+.link-button img {
+    width: 64px;
+    height: 64px;
+}
+
 .buttons {
   position: absolute;
   top: calc(100% - 6vh);
