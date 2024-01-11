@@ -151,6 +151,8 @@ header {
     color: #000000;
     width: 100%;
     z-index: 999;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: grid;
     justify-content: space-between;
     button {
@@ -162,7 +164,7 @@ header {
         border: 1px solid #fff;
     }
     @media (max-width: 768px) {
-        position: absolute;
+        position: relative;
         top: 0;
         left: 10px;
         z-index: 999;
