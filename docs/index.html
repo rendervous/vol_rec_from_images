@@ -14,11 +14,26 @@
                 <h1>Image-based Reconstruction of Heterogeneous Media in the Presence of Multiple Light-Scattering</h1>
                 <br/>
                 <h3>Ludwic Leonard and Rüdiger Westermann</h3>
-                Submitted to Computer &amp; Graphics on June, 2023; Accepted on December, 2023
-                <br/>
-                <br/>
+                Submitted to Computer &amp; Graphics on June, 2023; Accepted on January, 2024
             </div>
         </header>
+        <div style="overflow: hidden; height: 80px; ">
+            <div style="width: 200px; margin: auto">
+            <span class="link-button">
+                <a href="https://github.com/rendervous/vol_rec_from_images">
+                    <img style="width: 48px; height: 48px" src="github_icon.png">
+                </a>
+            </span>
+            <span class="link-button">
+                <a href="https://www.sciencedirect.com/science/article/pii/S0097849324000049">
+                    <img style="width: 48px; height: 48px" src="paper_icon.png">
+                </a>
+            </span >
+            </div>
+        </div>
+
+        <br/>
+
         <div style="max-width: 700px">
             <div style="width: 100%; overflow: hidden;  position: relative">
                 <div class="container" style="width: 40%; display:table-cell;">
@@ -76,29 +91,29 @@
                     </div>
                 </div>
             </div>
+
             <br/>
+
             <div style="width: 100%; overflow: hidden;  position: relative">
                 <h2 style="text-align: center">Abstract</h2>
                 <div style="padding: 10px 50px; text-align: justify"> Image-based reconstruction of a three-dimensional heterogeneous density field in the presence of multiple scattering of light is intrinsically under-constrained. This leads to reconstructions that look similar to the ground truth when rendered, but the recovered field is often far off the real one.
                 We shed light on the sources of uncertainty in the reconstruction process which are responsible for this ambiguity, and propose the following approaches to improve the reconstruction quality: Firstly, we introduce a new path sampling strategy, which yields more accurate estimates of the gradients of the extinction field. Secondly, we build upon the observation that the variance in the loss computation is one source of bias in the optimization process. To reduce this variance in the primal estimator, we propose exploiting temporal coherence by reusing previously rendered images.
                     All this is coupled with a constraint on spatial object occupancy, which restricts the problem to a reconstructed shape prior. In a number of examples we demonstrate that compared to existing approaches the proposed reconstruction pipeline leads to improved accuracy of the reconstructed density fields.
                 </div>
+
+                <h2 style="text-align: center">Citation</h2>
+                <pre style="padding: 10px 50px; overflow: auto;">
+@article{leonard2024image,
+  title={Image-based reconstruction of heterogeneous media in the presence of multiple light-scattering},
+  author={Leonard, Ludwic and Westermann, R{\"u}diger},
+  journal={Computers \& Graphics},
+  volume={119},
+  year={2024},
+  publisher={Elsevier}
+}
+                </pre>
             </div>
             <br/>
-            <div style="overflow: hidden; height: 80px; ">
-                <div style="width: 200px; margin: auto">
-                <span class="link-button">
-                    <a href="https://github.com/rendervous/vol_rec_from_images">
-                        <img src="github_icon.png">
-                    </a>
-                </span>
-                <span class="link-button">
-                    <a href="https://github.com/rendervous/rendervous">
-                        <img src="paper_icon.png">
-                    </a>
-                </span >
-                </div>
-            </div>
         </div>
     </main>
     <script>
