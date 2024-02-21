@@ -1,6 +1,7 @@
 # Image-based Reconstruction of Heterogeneous Media in the Presence of Multiple Light-Scattering
 Ludwig Leonard and Rüdiger Westermann<br>Technical University of Munich<br>
-| [Full paper] (https://) | 
+| [Paper Online](https://www.sciencedirect.com/science/article/pii/S0097849324000049)
+| [PDF](https://www.sciencedirect.com/science/article/pii/S0097849324000049/pdfft?md5=aaf326b1ee82efdfbe71ff088baf063d&pid=1-s2.0-S0097849324000049-main.pdf) |
 ![teaser](./docs/f_new_teaser-1.jpg)
 
 This repository contains the official authors implementation associated with the paper "*Image-based Reconstruction of Heterogeneous Media in the Presence of Multiple Light-Scattering*".
@@ -9,18 +10,16 @@ This repository contains the official authors implementation associated with the
 
 This project is under MIT License. If you found this project useful for your research please cite:
 
-<!--
 ```bibtex
-@article{leonard_and_westermann,
-    author = {Ludwig Leonard and R\"udiger Westermann},
-    title = {Image-based Reconstruction of Heterogeneous Media in the Presence of Multiple Light-Scattering},
-    journal = {Computer & Graphics},
-    year = {2024},
-    publisher = {Elsevier},
-    keywords = {differentiable rendering, inverse rendering, volumetric rendering}
+@article{leonard2024image,
+  title={Image-based reconstruction of heterogeneous media in the presence of multiple light-scattering},
+  author={Leonard, Ludwic and Westermann, R{\"u}diger},
+  journal={Computers \& Graphics},
+  volume={119},
+  year={2024},
+  publisher={Elsevier}
 }
 ```
--->
 
 ## Rendervous
 
